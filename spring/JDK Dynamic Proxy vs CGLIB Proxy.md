@@ -8,6 +8,9 @@
 
 `Client` -> `Proxy` -> `Target`
 
+스프링 AOP에서의 프록시란, 원본 객체를 감싼 새로운 객체로 부가 기능을 추가할 때 사용하는 패턴
+-> 중간에 부가 기능을 추가할 때 사용한다.
+
 ### Proxy는 왜 사용하는가?
 1. JPA의 Lazy Loading처럼 클라이언트가 타깃에 접근하는 방법을 제어
 2. 타깃에 부가적인 기능을 제공한다.
@@ -15,6 +18,7 @@
 
 ### Proxy Pattern이란?
 특정 객체에 대한 접근을 제어할 때 사용하는 패턴이다.
+* 클라이언트가 객체를 직접 호출하지 않고 프록시로 호출하여 제어권을 갖도록 하는 패턴
 * 인터페이스 타입 기반의 클라이언트 요청은 프록시 객체로 먼저 들어오게 된다.
 * Client가 상위 Interface를 가리키게 하고, 실제 구현체로 프록시 객체를 사용하도록 한다.
 * SOLID의 OCP, SRP를 지킬 수 있다.
@@ -52,7 +56,7 @@ JDK Proxy라고도 부른다.
 ## 동적 프록시
 ![img_2.png](img_2.png)
 클라이언트가 메서드 호출 시, proxy factory bean에서 인터페이스 유무를 체크한다.
-* 있다면, JDK Dynamic Proxy를 사용하고, 없다면 CGLIB Proxy를 사용한다.
+있다면, JDK Dynamic Proxy를 사용하고, 없다면 CGLIB Proxy를 사용한다.
 
 ## CGLIB(CodeGeneratorLibrary) Proxy
 Spring 4.3, Springboot 1.4부터 Default로 CGLIB를 사용하게 되었다.
